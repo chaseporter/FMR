@@ -277,6 +277,25 @@ def get_fuel_request_page_count(fuel_params, access_token=None):
 
 
 def get_sites_in_polygon(polygon, access_token=None):
+    """
+    Filter station data from FEMS API by provided polygon
+
+    Parameters
+    ----------
+    polgyon: Array[Point] in clockwise orientation defining a polygon
+        Point of form:
+            {
+                    "latitude": Float,
+                    "longitude": Float,
+            }
+
+    access_token: str
+        Access token for the FEMS API (optional)
+
+    Returns
+    ----------
+    Array of sites from FEMS API within a bounding box
+    """
     sites = get_sites(access_token)
     return filter_sites(sites, polygon)
 
@@ -292,8 +311,7 @@ def get_sites(access_token=None):
 
     Returns
     ----------
-    Response Object
-        Response from the FEMS API call
+    Array of sites from FEMS API
     """
     request_headers = api_request_headers(access_token)
     request_json = {
