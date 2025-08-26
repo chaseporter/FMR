@@ -20,3 +20,12 @@ if __name__ == "__main__":
         multiple_fuels_params
     )
     print(multiple_fuels_and_sites_results)
+
+    sample_polygon = [
+        {"latitude": 48.5, "longitude": -120.7},
+        {"latitude": 49.0, "longitude": -120.7},
+        {"latitude": 49.0, "longitude": -119.9},
+        {"latitude": 48.5, "longitude": -119.9},
+    ]
+    filtered_sites = fems_api.get_sites_in_polygon(sample_polygon)
+    print(filtered_sites)
